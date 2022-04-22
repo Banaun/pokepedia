@@ -87,12 +87,12 @@ body {
 }
 
 .search-button {
-  background-color: #ff5350;
+  background-color: #ecd820;
   height: 40px;
   width: 40px;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: #ff535088 5px 5px 15px;
+  box-shadow: #db900388 5px 5px 15px;
   color: white;
   font-size: 18px;
 }

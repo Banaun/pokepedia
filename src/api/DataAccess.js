@@ -17,11 +17,10 @@ export async function setAllPokemon() {
         });
       }
     })
-    .then(getPokemonTypes);
+    .then(setPokemonTypes);
 }
 
-async function getPokemonTypes() {
-  console.log(pokemonArr.length);
+async function setPokemonTypes() {
   for (let i = 1; i < pokemonArr.length; i++) {
     fetch(pokemonArr[i].url)
       .then((response) => response.json())
