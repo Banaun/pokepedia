@@ -1,43 +1,88 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { getAllPokemon, setAllPokemon } from "../api/DataAccess";
 import LoadingScreen from "./LoadingScreen";
+import SearchBar from "./SearchBar";
+import PokemonCard from "./PokemonCard";
 
-export default class PokemonPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pokemonList: [],
-      loadingDone: false,
+const PokemonPage = () => {
+  const [pokemonList, setPokemonList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  /*
+  useEffect(() => {
+    const loadPokemon = () => {
+      if (pokemonList.length < 1) {
+        let pokemons = [];
+        setAllPokemon()
+          .then((pokemons = getAllPokemon()))
+          .then(setPokemonList(pokemons))
+          .then(setLoading(false));
+      }
     };
+    loadPokemon();
+  }, [loading]);
+  */
 
-    setTimeout(() => {
-      this.loadPokemon();
-    }, 2000);
-  }
+  useEffect(() => {
+    let pokemons = [];
 
-  loadPokemon = () => {
-    setAllPokemon()
-      .then((this.state.pokemonList = getAllPokemon()))
-      .then(console.log(this.state.pokemonList))
-      .then(
-        this.setState({
-          loadingDone: true,
+    async function fetchMainData() {
+      let url = "https://pokeapi.co/api/v2/pokemon/?limit=898";
+      await fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          for (let i = 0; i < data.results.length; i++) {
+            pokemons.push({
+              id: i + 1,
+              name: data.results[i].name,
+              url: data.results[i].url,
+              image: "",
+              types: [],
+              abilities: [],
+              moves: [],
+              stats: [],
+            });
+          }
         })
-      );
-  };
+        .finally(() => {
+          setPokemonList(pokemons);
+        });
+    }
 
-  render() {
-    return <>{this.state.loadingDone ? <div></div> : <LoadingScreen />}</>;
-  }
-}
+    async function fetchSecondaryData() {
+      for (let i = 0; i < pokemons.length; i++) {
+        await fetch(pokemons[i].url)
+          .then((response) => response.json())
+          .then((data) => {
+            pokemons[i].abilities = data.abilities;
+            pokemons[i].moves = data.moves;
+            pokemons[i].types = data.types;
+            pokemons[i].image = data.sprites.front_default;
+            pokemons[i].stats = data.stats;
+          });
+      }
+      setPokemonList(pokemons);
+      setLoading(false);
+    }
+    fetchMainData().then(fetchSecondaryData);
+  }, []);
 
-class PokemonCard extends React.Component {
-  renderPokemon(i) {
-    return <Pokemon pokemon={i} />;
-  }
-}
+  return (
+    <>
+      {!loading ? (
+        <div className="pokemon-page">
+          <SearchBar />
+          <div className="pokemon-list-container">
+            {pokemonList.map((pokemon) => (
+              <PokemonCard key={pokemon.name} pokemon={pokemon} />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <LoadingScreen />
+      )}
+    </>
+  );
+};
 
-function Pokemon(pokemon) {
-  return <img className="pokemon-image" src={pokemon.url} />;
-}
+export default PokemonPage;

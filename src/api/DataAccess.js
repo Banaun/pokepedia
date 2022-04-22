@@ -1,8 +1,8 @@
-const pokemonArr = [" "];
+const pokemonArr = [];
 
 export async function setAllPokemon() {
   let url = "https://pokeapi.co/api/v2/pokemon/?limit=898";
-  fetch(url)
+  await fetch(url)
     .then((response) => response.json())
     .then((data) => {
       for (let i = 0; i < data.results.length; i++) {
@@ -14,21 +14,23 @@ export async function setAllPokemon() {
           types: [],
           abilities: [],
           moves: [],
+          stats: [],
         });
       }
-    })
-    .then(setPokemonTypes);
+    });
+  setPokemonTypes();
 }
 
 async function setPokemonTypes() {
-  for (let i = 1; i < pokemonArr.length; i++) {
-    fetch(pokemonArr[i].url)
+  for (let i = 0; i < pokemonArr.length; i++) {
+    await fetch(pokemonArr[i].url)
       .then((response) => response.json())
       .then((data) => {
         pokemonArr[i].abilities = data.abilities;
         pokemonArr[i].moves = data.moves;
         pokemonArr[i].types = data.types;
         pokemonArr[i].image = data.sprites.front_default;
+        pokemonArr[i].stats = data.stats;
       });
   }
 }
