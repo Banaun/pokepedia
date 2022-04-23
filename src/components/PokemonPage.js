@@ -8,20 +8,27 @@ const PokemonPage = () => {
   const [pokemonList, setPokemonList] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  /*
-  useEffect(() => {
-    const loadPokemon = () => {
-      if (pokemonList.length < 1) {
-        let pokemons = [];
-        setAllPokemon()
-          .then((pokemons = getAllPokemon()))
-          .then(setPokemonList(pokemons))
-          .then(setLoading(false));
-      }
-    };
-    loadPokemon();
-  }, [loading]);
-  */
+  const typeColors = {
+    normal: "#BCBCAC",
+    fighting: "#BC5442",
+    flying: "#669AFF",
+    poison: "#AB549A",
+    ground: "#DEBC54",
+    rock: "#BCAC66",
+    bug: "#ABBC1C",
+    ghost: "#6666BC",
+    steel: "#ABACBC",
+    fire: "#FF421C",
+    water: "#2F9AFF",
+    grass: "#78CD54",
+    electric: "#FFCD30",
+    psychic: "#FF549A",
+    ice: "#78DEFF",
+    dragon: "#7866EF",
+    dark: "#785442",
+    fairy: "#FFACFF",
+    shadow: "#0E2E4C",
+  };
 
   useEffect(() => {
     let pokemons = [];
@@ -37,6 +44,7 @@ const PokemonPage = () => {
               name: data.results[i].name,
               url: data.results[i].url,
               image: "",
+              modalImage: "",
               types: [],
               abilities: [],
               moves: [],
@@ -58,6 +66,8 @@ const PokemonPage = () => {
             pokemons[i].moves = data.moves;
             pokemons[i].types = data.types;
             pokemons[i].image = data.sprites.front_default;
+            pokemons[i].modalImage =
+              data.sprites.other.dream_world.front_default;
             pokemons[i].stats = data.stats;
           });
       }
@@ -68,7 +78,7 @@ const PokemonPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="pokemon-page-outer">
       {!loading ? (
         <div className="pokemon-page">
           <SearchBar />
@@ -81,7 +91,7 @@ const PokemonPage = () => {
       ) : (
         <LoadingScreen />
       )}
-    </>
+    </div>
   );
 };
 
