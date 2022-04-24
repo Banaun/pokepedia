@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
 * {
   margin: 0;
   padding: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
@@ -53,6 +56,7 @@ body {
 
 .search-input {
   margin: 30px 10px;
+  padding-left: 10px;
   height: 40px;
   width: 50vw;
   font-size: 26px;
@@ -78,8 +82,6 @@ body {
 }
 
 .pokemon-page {
-  margin: 0;
-  padding: 0;
   height: 100%;
   width: 100%;
   display: flex;
@@ -98,22 +100,63 @@ body {
 
 .pokemoncard-container {
   background-color: white;
-  min-width: 20%;
+  background-image: url(static/pokeball-white-icon.png);
+  background-repeat: no-repeat;
+  background-size: 200px auto;
+  background-position-x: 300px;
+  height: 200px;
+  width: 400px;
   margin: 10px;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
   border-radius: 10px;
-  transition-duration: 100ms;
   box-shadow: 3px 3px 3px 1px rgba(37, 37, 37, 0.3);
   -webkit-box-shadow: 3px 3px 3px 1px rgba(37, 37, 37, 0.3);
   -moz-box-shadow: 3px 3px 3px 1px rgba(37, 37, 37, 0.3);
 }
 
-.pokemoncard-container p {
+.card-type-outer-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.card-type-container1,
+.card-type-container2 {
+  position: relative;
+  bottom: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+.card-type-container1::first-letter {
+  text-transform: capitalize;
+}
+
+.pokemon-id {
+  position: relative;
+  top: -75px;
+  left: -170px;
+}
+
+.pokemon-name {
+  position: relative;
+  top: -80px;
   color: black;
+  font-size: 20px;
 }
 
 p::first-letter {
@@ -121,10 +164,12 @@ p::first-letter {
 }
 
 .pokemon-image {
-  width: 50%;
-  height: auto;
-  image-rendering: pixelated;
-  transition-duration: 100ms;
+  position: relative;
+  top: -40px;
+  height: 100px;
+  width: auto;
+  -webkit-filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
+  filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
 }
 
 .modal-container {
@@ -134,13 +179,102 @@ p::first-letter {
   justify-content: center;
 }
 
-.pokemon-modal-image {
+.modal-id {
   position: absolute;
-  top: -90px;
-  transform: scale(4);
+  left: 24px;
+  top: 20px;
+}
+
+.modal-image {
+  position: absolute;
+  top: -300px;
+  transform: scale(1);
   image-rendering: pixelated;
   -webkit-filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
   filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
+}
+
+.modal-name {
+  position: absolute;
+  top: 175px;
+}
+
+.modal-name h2::first-letter {
+  text-transform: capitalize;
+}
+
+.modal-description {
+  position: absolute;
+  top: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-description * {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.modal-type {
+  position: absolute;
+  top: 375px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-type-children {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.modal-type-children p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.modal-height {
+  position: absolute;
+  top: 475px;
+  margin-right: 150px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-weight {
+  position: absolute;
+  top: 475px;
+  margin-left: 150px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-abilities {
+  position: absolute;
+  top: 575px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modal-abilities-children {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.modal-abilities-children p {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 /* width */

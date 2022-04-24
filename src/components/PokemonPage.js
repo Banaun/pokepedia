@@ -31,50 +31,58 @@ const PokemonPage = () => {
   };
 
   useEffect(() => {
-    let pokemons = [];
+    let pokemons = [" "];
 
     async function fetchMainData() {
       let url = "https://pokeapi.co/api/v2/pokemon/?limit=898";
-      await fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-          for (let i = 0; i < data.results.length; i++) {
-            pokemons.push({
-              id: i + 1,
-              name: data.results[i].name,
-              url: data.results[i].url,
-              image: "",
-              modalImage: "",
-              types: [],
-              abilities: [],
-              moves: [],
-              stats: [],
-            });
-          }
-        })
-        .finally(() => {
-          setPokemonList(pokemons);
+      let response = await fetch(url);
+      let responseAsJson = await response.json();
+      for (let i = 0; i < responseAsJson.results.length; i++) {
+        pokemons.push({
+          id: i + 1,
+          name: responseAsJson.results[i].name,
+          description: "",
+          height: "",
+          weight: "",
+          url: responseAsJson.results[i].url,
+          types: [],
+          abilities: [],
+          moves: [],
+          stats: [],
         });
+      }
+      fetchAllTypes();
     }
 
-    async function fetchSecondaryData() {
-      for (let i = 0; i < pokemons.length; i++) {
-        await fetch(pokemons[i].url)
-          .then((response) => response.json())
-          .then((data) => {
-            pokemons[i].abilities = data.abilities;
-            pokemons[i].moves = data.moves;
-            pokemons[i].types = data.types;
-            pokemons[i].image = data.sprites.front_default;
-            pokemons[i].modalImage =
-              data.sprites.other.dream_world.front_default;
-            pokemons[i].stats = data.stats;
-          });
+    async function fetchAllTypes() {
+      for (let i = 0; i < 18; i++) {
+        let url = "https://pokeapi.co/api/v2/type/" + (i + 1);
+        let response = await fetch(url);
+        let responseAsJson = await response.json();
+
+        const pokemonInType = responseAsJson.pokemon;
+
+        for (let j = 0; j < pokemonInType.length; j++) {
+          const pokemonId = pokemonInType[j].pokemon.url
+            .replace("https://pokeapi.co/api/v2/pokemon/", "")
+            .replace("/", "");
+
+          if (pokemonId <= pokemons.length) {
+            pokemons[pokemonId].types.push(responseAsJson.name);
+          }
+        }
       }
+      loadComplete();
+    }
+
+    function loadComplete() {
+      pokemons.splice(0, 1);
       setPokemonList(pokemons);
       setLoading(false);
+      console.log(pokemons);
+      //console.log(po);
     }
-    fetchMainData().then(fetchSecondaryData);
+    fetchMainData();
   }, []);
 
   return (
@@ -84,7 +92,11 @@ const PokemonPage = () => {
           <SearchBar />
           <div className="pokemon-list-container">
             {pokemonList.map((pokemon) => (
-              <PokemonCard key={pokemon.name} pokemon={pokemon} />
+              <PokemonCard
+                key={pokemon.name}
+                pokemon={pokemon}
+                colors={typeColors}
+              />
             ))}
           </div>
         </div>
