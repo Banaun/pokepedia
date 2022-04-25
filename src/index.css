@@ -59,6 +59,7 @@ body {
   padding-left: 10px;
   height: 40px;
   width: 50vw;
+  max-width: 750px;
   font-size: 26px;
   border: none;
   border-radius: 5px;
@@ -81,21 +82,31 @@ body {
   -moz-box-shadow: 3px 3px 3px 1px rgba(37, 37, 37, 0.3);
 }
 
+.search-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .pokemon-page {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
 }
 
 .pokemon-list-container {
-  height: 100%;
   width: 80vw;
   display: flex;
   justify-content: center;
   flex-flow: wrap row;
   overflow-x: auto;
+}
+
+.no-result-container {
+  height: 100px;
+  display: flex;
+  align-items: center;
 }
 
 .pokemoncard-container {

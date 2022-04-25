@@ -7,6 +7,8 @@ import PokemonCard from "./PokemonCard";
 const PokemonPage = () => {
   const [pokemonList, setPokemonList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchResult, setSearchResult] = useState([]);
+  const [filteredView, setFilteredView] = useState(Boolean);
 
   const typeColors = {
     normal: "#BCBCAC",
@@ -85,20 +87,67 @@ const PokemonPage = () => {
     fetchMainData();
   }, []);
 
+  const sortBySearch = (searchInput) => {
+    const result = pokemonList.filter((pokemon) => {
+      if (!searchInput) {
+        return true;
+      }
+      if (
+        pokemon.name.toLowerCase().includes(searchInput.toLowerCase())
+        //pokemon.types.toLowerCase().includes(searchInput.toLowerCase()) ||
+        //pokemon.id === searchInput
+      ) {
+        return true;
+      }
+      return false;
+    });
+
+    if (result.length === pokemonList.length) {
+      setFilteredView(false);
+    } else if (result.length > 0 && result.length !== pokemonList.length) {
+      setFilteredView(true);
+      setSearchResult(result);
+    } else if (searchInput.length > 0) {
+      setFilteredView(true);
+      setSearchResult(searchInput);
+    } else {
+      setSearchResult(searchInput);
+      setFilteredView(false);
+    }
+  };
+
   return (
     <div className="pokemon-page-outer">
       {!loading ? (
         <div className="pokemon-page">
-          <SearchBar />
-          <div className="pokemon-list-container">
-            {pokemonList.map((pokemon) => (
-              <PokemonCard
-                key={pokemon.name}
-                pokemon={pokemon}
-                colors={typeColors}
-              />
-            ))}
-          </div>
+          <SearchBar sortBySearch={sortBySearch} />
+          {filteredView === false ? (
+            <div className="pokemon-list-container">
+              {pokemonList.map((pokemon) => (
+                <PokemonCard
+                  key={pokemon.name}
+                  pokemon={pokemon}
+                  colors={typeColors}
+                />
+              ))}
+            </div>
+          ) : typeof searchResult === "string" && searchResult !== "" ? (
+            <div className="pokemon-list-container">
+              <div className="no-result-container">
+                <h2>No results found</h2>
+              </div>
+            </div>
+          ) : (
+            <div className="pokemon-list-container">
+              {searchResult.map((pokemon) => (
+                <PokemonCard
+                  key={pokemon.name}
+                  pokemon={pokemon}
+                  colors={typeColors}
+                />
+              ))}
+            </div>
+          )}
         </div>
       ) : (
         <LoadingScreen />
