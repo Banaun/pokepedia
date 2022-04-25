@@ -6,6 +6,9 @@ function SearchBar({ sortBySearch }) {
   const handleChange = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value);
+    if (e.target.value === "") {
+      sortBySearch(e.target.value);
+    }
   };
 
   const handleSubmit = (e) => {

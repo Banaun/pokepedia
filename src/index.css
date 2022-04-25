@@ -214,27 +214,39 @@ p::first-letter {
   text-transform: capitalize;
 }
 
-.modal-description {
+.modal-tabs-container {
   position: absolute;
+  width: inherit;
   top: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-description {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-left: 80px;
+  margin-right: 80px;
+  text-align: center;
 }
 
-.modal-description * {
+.modal-description p {
   margin-left: 50px;
   margin-right: 50px;
+  font-size: 10;
 }
 
 .modal-type {
-  position: absolute;
-  top: 375px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-left: 80px;
+  margin-right: 80px;
 }
 
 .modal-type-children {
@@ -250,21 +262,21 @@ p::first-letter {
 }
 
 .modal-height {
-  position: absolute;
-  top: 475px;
-  margin-right: 150px;
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-left: 80px;
+  margin-right: 80px;
 }
 
 .modal-weight {
-  position: absolute;
-  top: 475px;
-  margin-left: 150px;
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-left: 80px;
+  margin-right: 80px;
 }
 
 .modal-abilities {
@@ -286,6 +298,15 @@ p::first-letter {
 .modal-abilities-children p {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.nav.nav-tabs .nav-link.active {
+  color: #111111;
+  font-weight: bold;
+}
+
+.nav.nav-tabs .nav-link {
+  color: #111111;
 }
 
 /* width */
