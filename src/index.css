@@ -185,8 +185,8 @@ p::first-letter {
 
 .modal-container {
   height: 50vh;
-  max-height: 675px;
-  min-height: 650px;
+  max-height: 575px;
+  min-height: 550px;
   width: inherit;
   display: flex;
   justify-content: center;
@@ -272,6 +272,12 @@ p::first-letter {
   margin-right: 10px;
 }
 
+.modal-height-weight-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .modal-height {
   position: relative;
   top: 20px;
@@ -279,8 +285,8 @@ p::first-letter {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-left: 80px;
-  margin-right: 80px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .modal-weight {
@@ -290,8 +296,8 @@ p::first-letter {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-left: 80px;
-  margin-right: 80px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .modal-abilities {
@@ -346,9 +352,6 @@ p::first-letter {
 
 @media (max-width: 1920px) {
   .pokemoncard-container {
-    background-color: white;
-    background-image: url(static/pokeball-white-icon.png);
-    background-repeat: no-repeat;
     background-size: 160px auto;
     background-position-x: 240px;
     height: 160px;
@@ -358,12 +361,33 @@ p::first-letter {
 
   .pokemon-id {
     position: relative;
-    top: -55px;
-    left: -115px;
+    top: -60px;
+    left: -130px;
   }
 
   .pokemon-name {
     top: -70px;
     font-size: 18px;
+  }
+
+  .modal-container {
+    max-height: 500px;
+    min-height: 465px;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+  }
+
+  .modal-image {
+    top: -300px;
+    transform: scale(0.7);
+  }
+
+  .modal-name {
+    top: 100px;
+  }
+
+  .modal-tabs-container {
+    top: 170px;
   }
 }

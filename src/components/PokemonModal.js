@@ -51,13 +51,15 @@ function PokemonModal(props) {
                     )}
                   </div>
                 </div>
-                <div className="modal-height">
-                  <h5>Height</h5>
-                  <p>{props.pokemon.height}</p>
-                </div>
-                <div className="modal-weight">
-                  <h5>Weight</h5>
-                  <p>{props.pokemon.weight}</p>
+                <div className="modal-height-weight-container">
+                  <div className="modal-height">
+                    <h5>Height</h5>
+                    <p>{props.pokemon.height}</p>
+                  </div>
+                  <div className="modal-weight">
+                    <h5>Weight</h5>
+                    <p>{props.pokemon.weight}</p>
+                  </div>
                 </div>
               </Tab>
               <Tab eventKey="stats" title="Stats"></Tab>
