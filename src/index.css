@@ -165,7 +165,7 @@ body {
 
 .pokemon-name {
   position: relative;
-  top: -80px;
+  top: -75px;
   color: black;
   font-size: 20px;
 }
@@ -208,7 +208,6 @@ p::first-letter {
   position: absolute;
   top: -300px;
   transform: scale(0.8);
-  image-rendering: pixelated;
   -webkit-filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
   filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
 }
@@ -300,23 +299,22 @@ p::first-letter {
   margin-right: 20px;
 }
 
-.modal-abilities {
-  position: absolute;
-  top: 575px;
+.modal-stats-container {
+  position: relative;
+  width: 60%;
+  top: 20px;
   display: flex;
+  flex-flow: wrap row;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-stats-container * {
+  position: relative;
+  display: flex;
   align-items: center;
   flex-direction: column;
-}
-
-.modal-abilities-children {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-}
-
-.modal-abilities-children p {
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -350,7 +348,7 @@ p::first-letter {
   background: #555;
 }
 
-@media (max-width: 1920px) {
+@media (max-width: 2100px) {
   .pokemoncard-container {
     background-size: 160px auto;
     background-position-x: 240px;
@@ -379,15 +377,15 @@ p::first-letter {
   }
 
   .modal-image {
-    top: -300px;
-    transform: scale(0.7);
+    top: -285px;
+    transform: scale(0.6);
   }
 
   .modal-name {
-    top: 100px;
+    top: 90px;
   }
 
   .modal-tabs-container {
-    top: 170px;
+    top: 160px;
   }
 }
