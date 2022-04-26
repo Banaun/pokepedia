@@ -185,9 +185,17 @@ p::first-letter {
 
 .modal-container {
   height: 50vh;
+  max-height: 675px;
+  min-height: 650px;
   width: inherit;
   display: flex;
   justify-content: center;
+}
+
+.btn-close {
+  position: absolute;
+  right: 24px;
+  top: 20px;
 }
 
 .modal-id {
@@ -199,7 +207,7 @@ p::first-letter {
 .modal-image {
   position: absolute;
   top: -300px;
-  transform: scale(1);
+  transform: scale(0.8);
   image-rendering: pixelated;
   -webkit-filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
   filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
@@ -207,7 +215,7 @@ p::first-letter {
 
 .modal-name {
   position: absolute;
-  top: 175px;
+  top: 130px;
 }
 
 .modal-name h2::first-letter {
@@ -216,8 +224,8 @@ p::first-letter {
 
 .modal-tabs-container {
   position: absolute;
-  width: inherit;
-  top: 250px;
+  height: calc(100%-200px);
+  top: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -225,6 +233,8 @@ p::first-letter {
 }
 
 .modal-description {
+  position: relative;
+  top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -237,10 +247,11 @@ p::first-letter {
 .modal-description p {
   margin-left: 50px;
   margin-right: 50px;
-  font-size: 10;
 }
 
 .modal-type {
+  position: relative;
+  top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,6 +273,8 @@ p::first-letter {
 }
 
 .modal-height {
+  position: relative;
+  top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -271,6 +284,8 @@ p::first-letter {
 }
 
 .modal-weight {
+  position: relative;
+  top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -327,4 +342,28 @@ p::first-letter {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+@media (max-width: 1920px) {
+  .pokemoncard-container {
+    background-color: white;
+    background-image: url(static/pokeball-white-icon.png);
+    background-repeat: no-repeat;
+    background-size: 160px auto;
+    background-position-x: 240px;
+    height: 160px;
+    width: 320px;
+    margin-top: 80px;
+  }
+
+  .pokemon-id {
+    position: relative;
+    top: -55px;
+    left: -115px;
+  }
+
+  .pokemon-name {
+    top: -70px;
+    font-size: 18px;
+  }
 }

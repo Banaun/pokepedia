@@ -1,6 +1,7 @@
 import Modal from "react-bootstrap/Modal";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import CloseButton from "react-bootstrap/CloseButton";
 
 function PokemonModal(props) {
   return (
@@ -12,6 +13,7 @@ function PokemonModal(props) {
     >
       <Modal.Body>
         <div className="modal-container">
+          <CloseButton aria-label="Hide" onClick={props.onHide} />
           <h4 className="modal-id">#{props.pokemon.id}</h4>
           <img
             className="modal-image"
@@ -29,7 +31,7 @@ function PokemonModal(props) {
               id="uncontrolled-tab-example"
               className="mb-3"
             >
-              <Tab eventKey="about" title="About">
+              <Tab eventKey="about" title="About" className="modal-tab-content">
                 <div className="modal-description">
                   <h5>Pokedex Entry</h5>
                   <p>{props.pokemon.description}</p>
