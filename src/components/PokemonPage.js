@@ -82,20 +82,19 @@ const PokemonPage = () => {
       setPokemonList(pokemons);
       setLoading(false);
       console.log(pokemons);
-      //console.log(po);
     }
     fetchMainData();
   }, []);
 
   const sortBySearch = (searchInput) => {
+    console.log(searchInput);
     const result = pokemonList.filter((pokemon) => {
       if (!searchInput) {
         return true;
       }
       if (
-        pokemon.name.toLowerCase().includes(searchInput.toLowerCase())
-        //pokemon.types.toLowerCase().includes(searchInput.toLowerCase()) ||
-        //pokemon.id === searchInput
+        pokemon.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+        pokemon.id === Number(searchInput)
       ) {
         return true;
       }

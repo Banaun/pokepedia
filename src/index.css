@@ -68,10 +68,17 @@ body {
   -moz-box-shadow: 3px 3px 3px 1px rgba(37, 37, 37, 0.3);
 }
 
-.search-button {
-  background-color: #d3d1d1;
+.search-clear {
+  position: relative;
+  right: 40px;
+}
+
+.search-button,
+.random-pokemon-button {
+  background-color: #5a5a5a;
   height: 40px;
   width: 40px;
+  margin-right: 10px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
@@ -130,6 +137,10 @@ body {
   -moz-box-shadow: 3px 3px 3px 1px rgba(37, 37, 37, 0.3);
 }
 
+.pokemoncard-container:hover .pokemon-image {
+  transform: scale(1.15);
+}
+
 .card-type-outer-container {
   position: relative;
   display: flex;
@@ -181,6 +192,7 @@ p::first-letter {
   width: auto;
   -webkit-filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
   filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
+  transition-duration: 100ms;
 }
 
 .modal-container {

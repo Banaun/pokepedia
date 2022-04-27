@@ -4,6 +4,7 @@ import PokemonModal from "./PokemonModal";
 const PokemonCard = (props) => {
   const [modalShow, setModalShow] = useState(false);
   const [pokemon, setPokemon] = useState(props.pokemon);
+  const [borderStyle, setBorderStyle] = useState({});
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -41,7 +42,6 @@ const PokemonCard = (props) => {
 
     function loadComplete(updatedPokemon) {
       setPokemon(updatedPokemon);
-      console.log(updatedPokemon);
     }
 
     fetchPokemonInfo()
@@ -49,9 +49,27 @@ const PokemonCard = (props) => {
       .finally(() => setModalShow(true));
   };
 
+  const handleMouseOver = () => {
+    setBorderStyle({
+      border: "2px solid " + props.colors[props.pokemon.types[0]],
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setBorderStyle({
+      border: "none",
+    });
+  };
+
   return (
     <>
-      <div className="pokemoncard-container" onClick={handleClick}>
+      <div
+        className="pokemoncard-container"
+        style={borderStyle}
+        onClick={handleClick}
+        onMouseOver={handleMouseOver}
+        onMouseLeave={handleMouseLeave}
+      >
         <img
           className="pokemon-image"
           src={require("../static/sprites/art/" + pokemon.id + ".png")}
