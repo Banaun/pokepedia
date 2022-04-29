@@ -2,6 +2,9 @@ import Modal from "react-bootstrap/Modal";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import CloseButton from "react-bootstrap/CloseButton";
+import PokemonAbout from "./PokemonAbout";
+import PokemonStats from "./PokemonStats";
+import PokemonAbilities from "./PokemonAbilities";
 
 function PokemonModal(props) {
   return (
@@ -31,98 +34,15 @@ function PokemonModal(props) {
               id="uncontrolled-tab-example"
               className="mb-3"
             >
-              <Tab
-                eventKey="about"
-                title="About"
-                className="modal-tab-about-content"
-              >
-                <div className="modal-description">
-                  <h5>Pokedex Entry</h5>
-                  <p>{props.pokemon.description}</p>
-                </div>
-                <div className="modal-type">
-                  <h5>Type</h5>
-                  <div className="modal-type-children">
-                    {props.pokemon.types[0] ? (
-                      <p>{props.pokemon.types[0]}</p>
-                    ) : (
-                      <></>
-                    )}
-                    {props.pokemon.types[1] ? (
-                      <p>{props.pokemon.types[1]}</p>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                </div>
-                <div className="modal-height-weight-container">
-                  <div className="modal-height">
-                    <h5>Height</h5>
-                    <p>{props.pokemon.height}</p>
-                  </div>
-                  <div className="modal-weight">
-                    <h5>Weight</h5>
-                    <p>{props.pokemon.weight}</p>
-                  </div>
-                </div>
+              <Tab eventKey="about" title="About">
+                <PokemonAbout pokemon={props.pokemon} />
               </Tab>
-              <Tab
-                eventKey="stats"
-                title="Stats"
-                className="modal-tab-stats-content"
-              >
-                <div className="modal-stats-container">
-                  <div className="hp-container">
-                    <h5>HP</h5>
-                    {props.pokemon.stats[0] ? (
-                      <p>{props.pokemon.stats[0].base_stat}</p>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                  <div className="attack-container">
-                    <h5>Attack</h5>
-                    {props.pokemon.stats[1] ? (
-                      <p>{props.pokemon.stats[1].base_stat}</p>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                  <div className="defense-container">
-                    <h5>Defense</h5>
-                    {props.pokemon.stats[2] ? (
-                      <p>{props.pokemon.stats[2].base_stat}</p>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                  <div className="special-attack-container">
-                    <h5>Special Attack</h5>
-                    {props.pokemon.stats[3] ? (
-                      <p>{props.pokemon.stats[3].base_stat}</p>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                  <div className="special-defense-container">
-                    <h5>Special Defense</h5>
-                    {props.pokemon.stats[4] ? (
-                      <p>{props.pokemon.stats[4].base_stat}</p>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                  <div className="speed-container">
-                    <h5>Speed</h5>
-                    {props.pokemon.stats[5] ? (
-                      <p>{props.pokemon.stats[5].base_stat}</p>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                </div>
+              <Tab eventKey="stats" title="Stats">
+                <PokemonStats pokemon={props.pokemon} />
               </Tab>
-              <Tab eventKey="abilities" title="Abilities"></Tab>
+              <Tab eventKey="abilities" title="Abilities">
+                <PokemonAbilities pokemon={props.pokemon} />
+              </Tab>
               <Tab eventKey="evolution" title="Evolution" disabled></Tab>
               <Tab eventKey="location" title="Location" disabled></Tab>
             </Tabs>

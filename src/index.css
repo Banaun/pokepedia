@@ -3,6 +3,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -162,15 +163,12 @@ body {
   padding: 5px;
   border-radius: 10px;
   opacity: 0.8;
-}
-
-.card-type-container1::first-letter {
   text-transform: capitalize;
 }
 
 .pokemon-id {
   position: relative;
-  top: -75px;
+  top: -77px;
   left: -170px;
 }
 
@@ -311,6 +309,7 @@ p::first-letter {
   margin-right: 20px;
 }
 
+/*
 .modal-stats-container {
   position: relative;
   width: 60%;
@@ -329,6 +328,73 @@ p::first-letter {
   flex-direction: column;
   margin-left: 10px;
   margin-right: 10px;
+}
+*/
+
+.modal-stats-container {
+  position: relative;
+  width: 450px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stat-container * {
+  margin-right: 5px;
+}
+
+.stat-bar-outer {
+  width: 400px;
+  background-color: #ddd;
+  border-radius: 15px;
+}
+
+.bar {
+  position: relative;
+  text-align: right;
+  font-size: 13px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  color: white;
+  border-radius: 15px;
+  white-space: nowrap;
+}
+
+.bar span {
+  position: relative;
+}
+
+.hp {
+  background-color: red;
+}
+
+.attack {
+  background-color: rgb(255, 166, 0);
+}
+
+.defense {
+  background-color: rgb(0, 132, 255);
+}
+
+.special-attack {
+  background-color: rgb(255, 145, 0);
+}
+
+.special-defense {
+  background-color: rgb(98, 0, 255);
+}
+
+.speed {
+  background-color: rgb(185, 235, 255);
 }
 
 .nav.nav-tabs .nav-link.active {

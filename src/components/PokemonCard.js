@@ -37,11 +37,11 @@ const PokemonCard = (props) => {
         });
 
       return updatedPokemon;
-      //loadComplete(updatedPokemon);
     }
 
     function loadComplete(updatedPokemon) {
       setPokemon(updatedPokemon);
+      console.log(updatedPokemon);
     }
 
     fetchPokemonInfo()
