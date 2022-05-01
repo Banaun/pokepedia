@@ -42,6 +42,7 @@ const PokemonPage = () => {
       for (let i = 0; i < responseAsJson.results.length; i++) {
         pokemons.push({
           id: i + 1,
+          evolutionChain: "",
           name: responseAsJson.results[i].name,
           description: "",
           height: "",
@@ -49,7 +50,6 @@ const PokemonPage = () => {
           url: responseAsJson.results[i].url,
           types: [],
           abilities: [],
-          moves: [],
           stats: [],
         });
       }

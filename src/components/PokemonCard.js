@@ -6,24 +6,49 @@ const PokemonCard = (props) => {
   const [pokemon, setPokemon] = useState(props.pokemon);
   const [borderStyle, setBorderStyle] = useState({});
 
-  const handleClick = (e) => {
-    e.preventDefault();
-
+  const handleClick = () => {
     async function fetchPokemonInfo() {
       let updatedPokemon = pokemon;
 
+      // ADD HEIGHT, WEIGHT, ABILITIES, MOVES AND STATS TO POKEMON
       await fetch(props.pokemon.url)
         .then((response) => response.json())
         .then((data) => {
           updatedPokemon.height = data.height / 10 + "m";
           updatedPokemon.weight = data.weight / 10 + "kg";
           updatedPokemon.abilities = data.abilities;
-          updatedPokemon.moves = data.moves;
           updatedPokemon.stats = data.stats;
+          return data.abilities;
+        })
+
+        // ADD DESCRIPTION TO ABILITIES
+        .then(async (abilities) => {
+          for (const [index, ability] of abilities.entries()) {
+            await fetch(ability.ability.url)
+              .then((response) => response.json())
+              .then((data) => {
+                for (let i = 0; i < data.flavor_text_entries.length; i++) {
+                  if (
+                    data.flavor_text_entries[i].language.name === "en" &&
+                    data.flavor_text_entries[i].version_group.name ===
+                      "sword-shield"
+                  ) {
+                    updatedPokemon.abilities[index].ability.description =
+                      data.flavor_text_entries[i].flavor_text
+                        .replace(/\n/g, " ")
+                        .replace(/\f/g, " ");
+                    break;
+                  }
+                }
+              });
+          }
         });
+
+      // ADD DESCRIPTION TO POKEMON
       await fetch("https://pokeapi.co/api/v2/pokemon-species/" + pokemon.id)
         .then((response) => response.json())
         .then((data) => {
+          updatedPokemon.evolutionChain = data.evolution_chain.url;
           for (let i = 0; i < data.flavor_text_entries.length; i++) {
             if (data.flavor_text_entries[i].language.name === "en") {
               updatedPokemon.description = data.flavor_text_entries[
@@ -36,12 +61,19 @@ const PokemonCard = (props) => {
           }
         });
 
+      await fetch(updatedPokemon.evolutionChain)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });
+
       return updatedPokemon;
     }
 
     function loadComplete(updatedPokemon) {
       setPokemon(updatedPokemon);
       console.log(updatedPokemon);
+      console.log(pokemon.id);
     }
 
     fetchPokemonInfo()
