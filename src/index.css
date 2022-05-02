@@ -418,6 +418,45 @@ p::first-letter {
   text-transform: capitalize;
 }
 
+.modal-evolution-container {
+  position: relative;
+  width: 450px;
+  top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.evolution-pokemon-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.evolution-image-and-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.evolution-image {
+  transform: scale(1.3);
+  image-rendering: pixelated;
+}
+
+.evolution-arrow-level-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.evolution-arrow-level-container p {
+  margin: 0;
+}
+
 .nav.nav-tabs .nav-link.active {
   color: #111111;
   font-weight: bold;
@@ -473,6 +512,10 @@ p::first-letter {
     width: inherit;
     display: flex;
     justify-content: center;
+  }
+
+  .modal-description {
+    width: 450px;
   }
 
   .modal-image {

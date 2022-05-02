@@ -5,6 +5,7 @@ import CloseButton from "react-bootstrap/CloseButton";
 import PokemonAbout from "./PokemonAbout";
 import PokemonStats from "./PokemonStats";
 import PokemonAbilities from "./PokemonAbilities";
+import PokemonEvolution from "./PokemonEvolution";
 
 function PokemonModal(props) {
   return (
@@ -43,7 +44,15 @@ function PokemonModal(props) {
               <Tab eventKey="abilities" title="Abilities">
                 <PokemonAbilities pokemon={props.pokemon} />
               </Tab>
-              <Tab eventKey="evolution" title="Evolution" disabled></Tab>
+              {Object.keys(props.pokemon.evolutionChain).length !== 0 ? (
+                <Tab eventKey="evolution" title="Evolution">
+                  <PokemonEvolution pokemon={props.pokemon} />
+                </Tab>
+              ) : (
+                <Tab eventKey="evolution" title="Evolution" disabled>
+                  <PokemonEvolution pokemon={props.pokemon} />
+                </Tab>
+              )}
               <Tab eventKey="location" title="Location" disabled></Tab>
             </Tabs>
           </div>

@@ -5,75 +5,141 @@ const PokemonCard = (props) => {
   const [modalShow, setModalShow] = useState(false);
   const [pokemon, setPokemon] = useState(props.pokemon);
   const [borderStyle, setBorderStyle] = useState({});
+  const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
     async function fetchPokemonInfo() {
-      let updatedPokemon = pokemon;
+      if (!clicked) {
+        let updatedPokemon = pokemon;
 
-      // ADD HEIGHT, WEIGHT, ABILITIES, MOVES AND STATS TO POKEMON
-      await fetch(props.pokemon.url)
-        .then((response) => response.json())
-        .then((data) => {
-          updatedPokemon.height = data.height / 10 + "m";
-          updatedPokemon.weight = data.weight / 10 + "kg";
-          updatedPokemon.abilities = data.abilities;
-          updatedPokemon.stats = data.stats;
-          return data.abilities;
-        })
+        // ADD HEIGHT, WEIGHT, ABILITIES, MOVES AND STATS TO POKEMON
+        await fetch(props.pokemon.url)
+          .then((response) => response.json())
+          .then((data) => {
+            updatedPokemon.height = data.height / 10 + "m";
+            updatedPokemon.weight = data.weight / 10 + "kg";
+            updatedPokemon.abilities = data.abilities;
+            updatedPokemon.stats = data.stats;
+            return data.abilities;
+          })
 
-        // ADD DESCRIPTION TO ABILITIES
-        .then(async (abilities) => {
-          for (const [index, ability] of abilities.entries()) {
-            await fetch(ability.ability.url)
-              .then((response) => response.json())
-              .then((data) => {
-                for (let i = 0; i < data.flavor_text_entries.length; i++) {
+          // ADD DESCRIPTION TO ABILITIES
+          .then(async (abilities) => {
+            for (const [index, ability] of abilities.entries()) {
+              await fetch(ability.ability.url)
+                .then((response) => response.json())
+                .then((data) => {
+                  for (let i = 0; i < data.flavor_text_entries.length; i++) {
+                    if (
+                      data.flavor_text_entries[i].language.name === "en" &&
+                      data.flavor_text_entries[i].version_group.name ===
+                        "sword-shield"
+                    ) {
+                      updatedPokemon.abilities[index].ability.description =
+                        data.flavor_text_entries[i].flavor_text
+                          .replace(/\n/g, " ")
+                          .replace(/\f/g, " ");
+                      break;
+                    }
+                  }
+                });
+            }
+          });
+
+        // ADD DESCRIPTION TO POKEMON
+        await fetch("https://pokeapi.co/api/v2/pokemon-species/" + pokemon.id)
+          .then((response) => response.json())
+          .then((data) => {
+            updatedPokemon.evolutionUrl = data.evolution_chain.url;
+            for (let i = 0; i < data.flavor_text_entries.length; i++) {
+              if (data.flavor_text_entries[i].language.name === "en") {
+                updatedPokemon.description = data.flavor_text_entries[
+                  i
+                ].flavor_text
+                  .replace(/\n/g, " ")
+                  .replace(/\f/g, " ");
+                break;
+              }
+            }
+          });
+
+        // ADD EVOLUTIONCHAIN TO POKEMON
+        await fetch(updatedPokemon.evolutionUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            if (Object.keys(updatedPokemon.evolutionChain).length === 0) {
+              if (data.chain.evolves_to.length > 0) {
+                updatedPokemon.evolutionChain.first = {
+                  id: data.chain.species.url.split("/")[6],
+                  name: data.chain.species.name,
+                };
+                if (data.chain.evolves_to[0].evolution_details.length !== 0) {
+                  updatedPokemon.evolutionChain.second = {
+                    id: data.chain.evolves_to[0].species.url.split("/")[6],
+                    name: data.chain.evolves_to[0].species.name,
+                    level:
+                      data.chain.evolves_to[0].evolution_details[0].min_level,
+                    item: data.chain.evolves_to[0].evolution_details[0].item,
+                    heldItem:
+                      data.chain.evolves_to[0].evolution_details[0].held_item,
+                  };
+                } else {
+                  updatedPokemon.evolutionChain.second = {
+                    id: data.chain.evolves_to[0].species.url.split("/")[6],
+                    name: data.chain.evolves_to[0].species.name,
+                    level: null,
+                    item: null,
+                    heldItem: null,
+                  };
+                }
+              }
+              if (data.chain.evolves_to[0]) {
+                if (data.chain.evolves_to[0].evolves_to.length > 0) {
                   if (
-                    data.flavor_text_entries[i].language.name === "en" &&
-                    data.flavor_text_entries[i].version_group.name ===
-                      "sword-shield"
+                    data.chain.evolves_to[0].evolves_to[0].evolution_details
+                      .length !== 0
                   ) {
-                    updatedPokemon.abilities[index].ability.description =
-                      data.flavor_text_entries[i].flavor_text
-                        .replace(/\n/g, " ")
-                        .replace(/\f/g, " ");
-                    break;
+                    updatedPokemon.evolutionChain.third = {
+                      id: data.chain.evolves_to[0].evolves_to[0].species.url.split(
+                        "/"
+                      )[6],
+                      name: data.chain.evolves_to[0].evolves_to[0].species.name,
+                      level:
+                        data.chain.evolves_to[0].evolves_to[0]
+                          .evolution_details[0].min_level,
+                      item: data.chain.evolves_to[0].evolves_to[0]
+                        .evolution_details[0].item,
+                      heldItem:
+                        data.chain.evolves_to[0].evolves_to[0]
+                          .evolution_details[0].held_item,
+                    };
+                  } else {
+                    updatedPokemon.evolutionChain.third = {
+                      id: data.chain.evolves_to[0].evolves_to[0].species.url.split(
+                        "/"
+                      )[6],
+                      name: data.chain.evolves_to[0].evolves_to[0].species.name,
+                      level: null,
+                      item: null,
+                      heldItem: null,
+                    };
                   }
                 }
-              });
-          }
-        });
-
-      // ADD DESCRIPTION TO POKEMON
-      await fetch("https://pokeapi.co/api/v2/pokemon-species/" + pokemon.id)
-        .then((response) => response.json())
-        .then((data) => {
-          updatedPokemon.evolutionChain = data.evolution_chain.url;
-          for (let i = 0; i < data.flavor_text_entries.length; i++) {
-            if (data.flavor_text_entries[i].language.name === "en") {
-              updatedPokemon.description = data.flavor_text_entries[
-                i
-              ].flavor_text
-                .replace(/\n/g, " ")
-                .replace(/\f/g, " ");
-              break;
+              }
             }
-          }
-        });
+            console.log(updatedPokemon.evolutionChain);
+          });
 
-      await fetch(updatedPokemon.evolutionChain)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        });
-
-      return updatedPokemon;
+        return updatedPokemon;
+      }
+      return pokemon;
     }
 
     function loadComplete(updatedPokemon) {
       setPokemon(updatedPokemon);
+      setClicked(true);
       console.log(updatedPokemon);
-      console.log(pokemon.id);
     }
 
     fetchPokemonInfo()
