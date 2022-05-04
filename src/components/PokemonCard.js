@@ -67,7 +67,6 @@ const PokemonCard = (props) => {
         await fetch(updatedPokemon.evolutionUrl)
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
             if (Object.keys(updatedPokemon.evolutionChain).length === 0) {
               if (data.chain.evolves_to.length > 0) {
                 updatedPokemon.evolutionChain.first = {
@@ -83,6 +82,9 @@ const PokemonCard = (props) => {
                     item: data.chain.evolves_to[0].evolution_details[0].item,
                     heldItem:
                       data.chain.evolves_to[0].evolution_details[0].held_item,
+                    trigger:
+                      data.chain.evolves_to[0].evolution_details[0].trigger
+                        .name,
                   };
                 } else {
                   updatedPokemon.evolutionChain.second = {
@@ -91,6 +93,7 @@ const PokemonCard = (props) => {
                     level: null,
                     item: null,
                     heldItem: null,
+                    trigger: "",
                   };
                 }
               }
@@ -113,6 +116,9 @@ const PokemonCard = (props) => {
                       heldItem:
                         data.chain.evolves_to[0].evolves_to[0]
                           .evolution_details[0].held_item,
+                      trigger:
+                        data.chain.evolves_to[0].evolves_to[0]
+                          .evolution_details[0].trigger.name,
                     };
                   } else {
                     updatedPokemon.evolutionChain.third = {
@@ -123,12 +129,31 @@ const PokemonCard = (props) => {
                       level: null,
                       item: null,
                       heldItem: null,
+                      trigger: "",
                     };
                   }
                 }
               }
             }
-            console.log(updatedPokemon.evolutionChain);
+          });
+
+        // ADD LOCATION TO POKEMON
+        await fetch(
+          "https://pokeapi.co/api/v2/pokemon/" + pokemon.id + "/encounters"
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (Object.keys(updatedPokemon.location).length === 0) {
+              for (let i = 0; i < data.length; i++) {
+                for (let j = 0; j < data[i].version_details.length; j++) {
+                  updatedPokemon.location[i + j] = {
+                    name: data[i].location_area.name,
+                    version: data[i].version_details[j].version.name,
+                  };
+                }
+              }
+              console.log(updatedPokemon.location);
+            }
           });
 
         return updatedPokemon;

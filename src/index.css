@@ -194,8 +194,6 @@ p::first-letter {
 }
 
 .modal-container {
-  height: 50vh;
-  max-height: 575px;
   min-height: 550px;
   width: inherit;
   display: flex;
@@ -308,28 +306,6 @@ p::first-letter {
   margin-left: 20px;
   margin-right: 20px;
 }
-
-/*
-.modal-stats-container {
-  position: relative;
-  width: 60%;
-  top: 20px;
-  display: flex;
-  flex-flow: wrap row;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.modal-stats-container * {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-*/
 
 .modal-stats-container {
   position: relative;
@@ -451,10 +427,39 @@ p::first-letter {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .evolution-arrow-level-container p {
   margin: 0;
+}
+
+.modal-location-container {
+  position: relative;
+  width: 600px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.location-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.location-collapse-container {
+  margin-top: 20px;
+  max-height: 235px;
+  overflow-y: scroll;
+}
+
+.collapse-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .nav.nav-tabs .nav-link.active {
@@ -507,8 +512,7 @@ p::first-letter {
   }
 
   .modal-container {
-    max-height: 500px;
-    min-height: 465px;
+    height: 500px;
     width: inherit;
     display: flex;
     justify-content: center;
@@ -529,5 +533,9 @@ p::first-letter {
 
   .modal-tabs-container {
     top: 160px;
+  }
+
+  .location-collapse-container {
+    max-height: 270px;
   }
 }

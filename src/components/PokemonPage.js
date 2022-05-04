@@ -52,6 +52,7 @@ const PokemonPage = () => {
           types: [],
           abilities: [],
           stats: [],
+          location: {},
         });
       }
       fetchAllTypes();

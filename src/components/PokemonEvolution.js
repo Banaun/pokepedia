@@ -28,7 +28,7 @@ function PokemonEvolution(props) {
                 ) : props.pokemon.evolutionChain.second.heldItem !== null ? (
                   <p>{props.pokemon.evolutionChain.second.heldItem.name}</p>
                 ) : (
-                  <></>
+                  <p>{props.pokemon.evolutionChain.second.trigger}</p>
                 )}
               </>
             ) : (
@@ -64,7 +64,7 @@ function PokemonEvolution(props) {
                 ) : props.pokemon.evolutionChain.third.heldItem !== null ? (
                   <p>{props.pokemon.evolutionChain.third.heldItem.name}</p>
                 ) : (
-                  <></>
+                  <p>{props.pokemon.evolutionChain.third.trigger}</p>
                 )}
               </>
             ) : (

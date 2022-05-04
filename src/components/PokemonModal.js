@@ -6,6 +6,7 @@ import PokemonAbout from "./PokemonAbout";
 import PokemonStats from "./PokemonStats";
 import PokemonAbilities from "./PokemonAbilities";
 import PokemonEvolution from "./PokemonEvolution";
+import PokemonLocation from "./PokemonLocation";
 
 function PokemonModal(props) {
   return (
@@ -49,11 +50,15 @@ function PokemonModal(props) {
                   <PokemonEvolution pokemon={props.pokemon} />
                 </Tab>
               ) : (
-                <Tab eventKey="evolution" title="Evolution" disabled>
-                  <PokemonEvolution pokemon={props.pokemon} />
-                </Tab>
+                <Tab eventKey="evolution" title="Evolution" disabled></Tab>
               )}
-              <Tab eventKey="location" title="Location" disabled></Tab>
+              {Object.keys(props.pokemon.location).length !== 0 ? (
+                <Tab eventKey="location" title="Location">
+                  <PokemonLocation pokemon={props.pokemon} />
+                </Tab>
+              ) : (
+                <Tab eventKey="location" title="Location" disabled></Tab>
+              )}
             </Tabs>
           </div>
         </div>
