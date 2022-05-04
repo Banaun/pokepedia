@@ -152,7 +152,6 @@ const PokemonCard = (props) => {
                   };
                 }
               }
-              console.log(updatedPokemon.location);
             }
           });
 

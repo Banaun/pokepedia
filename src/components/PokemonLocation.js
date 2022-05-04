@@ -121,109 +121,193 @@ function PokemonLocation(props) {
     genVIII: ["sword", "shield"],
   };
 
-  const hasLocationInGen = [];
   const locations = {};
 
-  if (hasLocationInGen.length === 0) {
-    for (let key in props.pokemon.location) {
-      if (versions.genI.includes(props.pokemon.location[key].version)) {
-        if (!hasLocationInGen.includes("Generation I")) {
-          hasLocationInGen.push("Generation I");
+  for (let key in props.pokemon.location) {
+    if (versions.genI.includes(props.pokemon.location[key].version)) {
+      if ("genI" in locations) {
+        if (
+          !locations.genI.includes(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          )
+        ) {
+          locations.genI.push(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          );
         }
-        if ("genI" in locations) {
-          if (!locations.genI.includes(props.pokemon.location[key].name)) {
-            locations.genI.push(props.pokemon.location[key].name);
-          }
-        } else {
-          locations.genI = [props.pokemon.location[key].name];
-        }
-      }
-      if (versions.genII.includes(props.pokemon.location[key].version)) {
-        if (!hasLocationInGen.includes("Generation II")) {
-          hasLocationInGen.push("Generation II");
-        }
-        if ("genII" in locations) {
-          if (!locations.genII.includes(props.pokemon.location[key].name)) {
-            locations.genII.push(props.pokemon.location[key].name);
-          }
-        } else {
-          locations.genII = [props.pokemon.location[key].name];
-        }
-      }
-      if (versions.genIII.includes(props.pokemon.location[key].version)) {
-        if (!hasLocationInGen.includes("Generation III")) {
-          hasLocationInGen.push("Generation III");
-        }
-        if ("genIII" in locations) {
-          if (!locations.genIII.includes(props.pokemon.location[key].name)) {
-            locations.genIII.push(props.pokemon.location[key].name);
-          }
-        } else {
-          locations.genIII = [props.pokemon.location[key].name];
-        }
-      }
-      if (versions.genIV.includes(props.pokemon.location[key].version)) {
-        if (!hasLocationInGen.includes("Generation IV")) {
-          hasLocationInGen.push("Generation IV");
-        }
-        if ("genIV" in locations) {
-          if (!locations.genIV.includes(props.pokemon.location[key].name)) {
-            locations.genIV.push(props.pokemon.location[key].name);
-          }
-        } else {
-          locations.genIV = [props.pokemon.location[key].name];
-        }
-      }
-      if (versions.genV.includes(props.pokemon.location[key].version)) {
-        if (!hasLocationInGen.includes("Generation V")) {
-          hasLocationInGen.push("Generation V");
-        }
-        if ("genV" in locations) {
-          if (!locations.genV.includes(props.pokemon.location[key].name)) {
-            locations.genV.push(props.pokemon.location[key].name);
-          }
-        } else {
-          locations.genV = [props.pokemon.location[key].name];
-        }
-      }
-      if (versions.genVI.includes(props.pokemon.location[key].version)) {
-        if (!hasLocationInGen.includes("Generation VI")) {
-          hasLocationInGen.push("Generation VI");
-        }
-        if ("genVI" in locations) {
-          if (!locations.genVI.includes(props.pokemon.location[key].name)) {
-            locations.genVI.push(props.pokemon.location[key].name);
-          }
-        } else {
-          locations.genVI = [props.pokemon.location[key].name];
-        }
-      }
-      if (versions.genVII.includes(props.pokemon.location[key].version)) {
-        if (!hasLocationInGen.includes("Generation VII")) {
-          hasLocationInGen.push("Generation VII");
-        }
-        if ("genVII" in locations) {
-          if (!locations.genVII.includes(props.pokemon.location[key].name)) {
-            locations.genVII.push(props.pokemon.location[key].name);
-          }
-        } else {
-          locations.genVII = [props.pokemon.location[key].name];
-        }
-      }
-      if (versions.genVIII.includes(props.pokemon.location[key].version)) {
-        if (!hasLocationInGen.includes("Generation VIII")) {
-          hasLocationInGen.push("Generation VIII");
-        }
-        if ("genVIII" in locations) {
-          if (!locations.genVIII.includes(props.pokemon.location[key].name)) {
-            locations.genVIII.push(props.pokemon.location[key].name);
-          }
-        } else {
-          locations.genVIII = [props.pokemon.location[key].name];
-        }
+      } else {
+        locations.genI = [
+          props.pokemon.location[key].name
+            .replace(/-/gi, " ")
+            .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase()),
+        ];
       }
     }
-    console.log(locations);
+    if (versions.genII.includes(props.pokemon.location[key].version)) {
+      if ("genII" in locations) {
+        if (
+          !locations.genII.includes(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          )
+        ) {
+          locations.genII.push(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          );
+        }
+      } else {
+        locations.genII = [
+          props.pokemon.location[key].name
+            .replace(/-/gi, " ")
+            .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase()),
+        ];
+      }
+    }
+    if (versions.genIII.includes(props.pokemon.location[key].version)) {
+      if ("genIII" in locations) {
+        if (
+          !locations.genIII.includes(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          )
+        ) {
+          locations.genIII.push(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          );
+        }
+      } else {
+        locations.genIII = [
+          props.pokemon.location[key].name
+            .replace(/-/gi, " ")
+            .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase()),
+        ];
+      }
+    }
+    if (versions.genIV.includes(props.pokemon.location[key].version)) {
+      if ("genIV" in locations) {
+        if (
+          !locations.genIV.includes(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          )
+        ) {
+          locations.genIV.push(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          );
+        }
+      } else {
+        locations.genIV = [
+          props.pokemon.location[key].name
+            .replace(/-/gi, " ")
+            .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase()),
+        ];
+      }
+    }
+    if (versions.genV.includes(props.pokemon.location[key].version)) {
+      if ("genV" in locations) {
+        if (
+          !locations.genV.includes(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          )
+        ) {
+          locations.genV.push(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          );
+        }
+      } else {
+        locations.genV = [
+          props.pokemon.location[key].name
+            .replace(/-/gi, " ")
+            .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase()),
+        ];
+      }
+    }
+    if (versions.genVI.includes(props.pokemon.location[key].version)) {
+      if ("genVI" in locations) {
+        if (
+          !locations.genVI.includes(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          )
+        ) {
+          locations.genVI.push(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          );
+        }
+      } else {
+        locations.genVI = [
+          props.pokemon.location[key].name
+            .replace(/-/gi, " ")
+            .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase()),
+        ];
+      }
+    }
+    if (versions.genVII.includes(props.pokemon.location[key].version)) {
+      if ("genVII" in locations) {
+        if (
+          !locations.genVII.includes(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          )
+        ) {
+          locations.genVII.push(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          );
+        }
+      } else {
+        locations.genVII = [
+          props.pokemon.location[key].name
+            .replace(/-/gi, " ")
+            .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase()),
+        ];
+      }
+    }
+    if (versions.genVIII.includes(props.pokemon.location[key].version)) {
+      if ("genVIII" in locations) {
+        if (
+          !locations.genVIII.includes(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          )
+        ) {
+          locations.genVIII.push(
+            props.pokemon.location[key].name
+              .replace(/-/gi, " ")
+              .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase())
+          );
+        }
+      } else {
+        locations.genVIII = [
+          props.pokemon.location[key].name
+            .replace(/-/gi, " ")
+            .replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase()),
+        ];
+      }
+    }
   }
 
   return (
