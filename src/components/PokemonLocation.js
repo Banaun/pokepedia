@@ -12,6 +12,7 @@ function PokemonLocation(props) {
   const [open7, setOpen7] = useState(false);
   const [open8, setOpen8] = useState(false);
 
+  //Handle shown Collapse element
   const handleClick = (gen) => {
     if (gen === "gen1") {
       setOpen1(!open1);
@@ -95,6 +96,7 @@ function PokemonLocation(props) {
     }
   };
 
+  //Versions in each generation
   const versions = {
     genI: ["red", "green", "blue", "yellow"],
     genII: ["gold", "silver", "crystal"],
@@ -123,6 +125,7 @@ function PokemonLocation(props) {
 
   const locations = {};
 
+  //Format and set locations to generation
   for (let key in props.pokemon.location) {
     if (versions.genI.includes(props.pokemon.location[key].version)) {
       if ("genI" in locations) {

@@ -10,6 +10,7 @@ const PokemonPage = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [filteredView, setFilteredView] = useState(Boolean);
 
+  //Colors for each type
   const typeColors = {
     normal: "#BCBCAC",
     fighting: "#BC5442",
@@ -32,9 +33,11 @@ const PokemonPage = () => {
     shadow: "#0E2E4C",
   };
 
+  //Initial fetch for the main page that lists all pokemon
   useEffect(() => {
     let pokemons = [" "];
 
+    //Fetch name and url for each pokemon
     async function fetchMainData() {
       let url = "https://pokeapi.co/api/v2/pokemon/?limit=898";
       let response = await fetch(url);
@@ -58,6 +61,7 @@ const PokemonPage = () => {
       fetchAllTypes();
     }
 
+    //Fetch types for each pokemon
     async function fetchAllTypes() {
       for (let i = 0; i < 18; i++) {
         let url = "https://pokeapi.co/api/v2/type/" + (i + 1);
@@ -87,8 +91,8 @@ const PokemonPage = () => {
     fetchMainData();
   }, []);
 
+  //Filter the shown pokemons to match the search input (input from SearchBar.js)
   const sortBySearch = (searchInput) => {
-    console.log(searchInput);
     const result = pokemonList.filter((pokemon) => {
       if (!searchInput) {
         return true;

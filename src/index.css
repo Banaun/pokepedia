@@ -413,8 +413,11 @@ p::first-letter {
 .evolution-image-and-name {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+.evolution-image-and-name p {
+  margin-top: 10px;
 }
 
 .evolution-image {

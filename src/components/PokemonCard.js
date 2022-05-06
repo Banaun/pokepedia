@@ -12,7 +12,7 @@ const PokemonCard = (props) => {
       if (!clicked) {
         let updatedPokemon = pokemon;
 
-        // ADD HEIGHT, WEIGHT, ABILITIES, MOVES AND STATS TO POKEMON
+        //Add height, weight, abilities, moves and stats to pokemon
         await fetch(props.pokemon.url)
           .then((response) => response.json())
           .then((data) => {
@@ -23,7 +23,7 @@ const PokemonCard = (props) => {
             return data.abilities;
           })
 
-          // ADD DESCRIPTION TO ABILITIES
+          //Add description to abilities
           .then(async (abilities) => {
             for (const [index, ability] of abilities.entries()) {
               await fetch(ability.ability.url)
@@ -46,7 +46,7 @@ const PokemonCard = (props) => {
             }
           });
 
-        // ADD DESCRIPTION TO POKEMON
+        //Add description to pokemon
         await fetch("https://pokeapi.co/api/v2/pokemon-species/" + pokemon.id)
           .then((response) => response.json())
           .then((data) => {
@@ -63,7 +63,7 @@ const PokemonCard = (props) => {
             }
           });
 
-        // ADD EVOLUTIONCHAIN TO POKEMON
+        //Add evolutionchain to pokemon
         await fetch(updatedPokemon.evolutionUrl)
           .then((response) => response.json())
           .then((data) => {
@@ -137,7 +137,7 @@ const PokemonCard = (props) => {
             }
           });
 
-        // ADD LOCATION TO POKEMON
+        //Add location to pokemon
         await fetch(
           "https://pokeapi.co/api/v2/pokemon/" + pokemon.id + "/encounters"
         )
