@@ -7,6 +7,8 @@ import PokemonStats from "./PokemonStats";
 import PokemonAbilities from "./PokemonAbilities";
 import PokemonEvolution from "./PokemonEvolution";
 import PokemonLocation from "./PokemonLocation";
+import LoadingScreen from "./LoadingScreen";
+import LoadingPokemonInfo from "./LoadingPokemonInfo";
 
 function PokemonModal(props) {
   return (
@@ -28,39 +30,41 @@ function PokemonModal(props) {
           <div className="modal-name">
             <h2>{props.pokemon.name}</h2>
           </div>
-
-          {/* TABS */}
-          <div className="modal-tabs-container">
-            <Tabs
-              defaultActiveKey="about"
-              id="uncontrolled-tab-example"
-              className="mb-3"
-            >
-              <Tab eventKey="about" title="About">
-                <PokemonAbout pokemon={props.pokemon} />
-              </Tab>
-              <Tab eventKey="stats" title="Stats">
-                <PokemonStats pokemon={props.pokemon} />
-              </Tab>
-              <Tab eventKey="abilities" title="Abilities">
-                <PokemonAbilities pokemon={props.pokemon} />
-              </Tab>
-              {Object.keys(props.pokemon.evolutionChain).length !== 0 ? (
-                <Tab eventKey="evolution" title="Evolution">
-                  <PokemonEvolution pokemon={props.pokemon} />
+          {!props.loading ? (
+            <div className="modal-tabs-container">
+              <Tabs
+                defaultActiveKey="about"
+                id="uncontrolled-tab-example"
+                className="mb-3"
+              >
+                <Tab eventKey="about" title="About">
+                  <PokemonAbout pokemon={props.pokemon} />
                 </Tab>
-              ) : (
-                <Tab eventKey="evolution" title="Evolution" disabled></Tab>
-              )}
-              {Object.keys(props.pokemon.location).length !== 0 ? (
-                <Tab eventKey="location" title="Location">
-                  <PokemonLocation pokemon={props.pokemon} />
+                <Tab eventKey="stats" title="Stats">
+                  <PokemonStats pokemon={props.pokemon} />
                 </Tab>
-              ) : (
-                <Tab eventKey="location" title="Location" disabled></Tab>
-              )}
-            </Tabs>
-          </div>
+                <Tab eventKey="abilities" title="Abilities">
+                  <PokemonAbilities pokemon={props.pokemon} />
+                </Tab>
+                {Object.keys(props.pokemon.evolutionChain).length !== 0 ? (
+                  <Tab eventKey="evolution" title="Evolution">
+                    <PokemonEvolution pokemon={props.pokemon} />
+                  </Tab>
+                ) : (
+                  <Tab eventKey="evolution" title="Evolution" disabled></Tab>
+                )}
+                {Object.keys(props.pokemon.location).length !== 0 ? (
+                  <Tab eventKey="location" title="Location">
+                    <PokemonLocation pokemon={props.pokemon} />
+                  </Tab>
+                ) : (
+                  <Tab eventKey="location" title="Location" disabled></Tab>
+                )}
+              </Tabs>
+            </div>
+          ) : (
+            <LoadingPokemonInfo />
+          )}
         </div>
       </Modal.Body>
     </Modal>

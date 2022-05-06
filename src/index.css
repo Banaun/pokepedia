@@ -34,6 +34,11 @@ body {
   background-color: white;
 }
 
+.loading-pokemon-container {
+  display: flex;
+  align-items: center;
+}
+
 .loading-pokeball {
   height: 100px;
   filter: brightness(80%);
@@ -56,8 +61,8 @@ body {
 }
 
 .search-input {
-  margin: 30px 10px;
-  padding-left: 10px;
+  margin: 2vh 10px;
+  padding-left: 1vw;
   height: 40px;
   width: 50vw;
   max-width: 750px;
@@ -126,7 +131,7 @@ body {
   height: 200px;
   width: 400px;
   margin: 10px;
-  margin-top: 50px;
+  margin-top: 70px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -190,12 +195,11 @@ p::first-letter {
   width: auto;
   -webkit-filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
   filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
-  transition-duration: 100ms;
+  transition-duration: 200ms;
 }
 
 .modal-container {
-  min-height: 550px;
-  width: inherit;
+  height: 500px;
   display: flex;
   justify-content: center;
 }
@@ -230,41 +234,46 @@ p::first-letter {
 }
 
 .modal-tabs-container {
-  position: absolute;
-  height: calc(100%-200px);
-  top: 200px;
+  position: relative;
+  height: 340px;
+  width: 550px;
+  top: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tab-content {
+  height: 280px;
+}
+
+.tab-pane {
+  height: inherit;
+}
+
+.modal-about-container {
+  position: relative;
+  top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  overflow-y: auto;
 }
 
 .modal-description {
-  position: relative;
-  top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-left: 80px;
-  margin-right: 80px;
   text-align: center;
 }
 
-.modal-description p {
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
 .modal-type {
-  position: relative;
-  top: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-left: 80px;
-  margin-right: 80px;
 }
 
 .modal-type-children {
@@ -287,7 +296,6 @@ p::first-letter {
 
 .modal-height {
   position: relative;
-  top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -298,7 +306,6 @@ p::first-letter {
 
 .modal-weight {
   position: relative;
-  top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -380,6 +387,7 @@ p::first-letter {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-y: auto;
 }
 
 .ability-container {
@@ -456,7 +464,7 @@ p::first-letter {
 .location-collapse-container {
   margin-top: 20px;
   max-height: 235px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .collapse-inner {
@@ -494,6 +502,7 @@ p::first-letter {
   background: #555;
 }
 
+/*
 @media (max-width: 2100px) {
   .pokemoncard-container {
     background-size: 160px auto;
@@ -542,3 +551,4 @@ p::first-letter {
     max-height: 270px;
   }
 }
+*/

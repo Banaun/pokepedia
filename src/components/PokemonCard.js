@@ -6,8 +6,11 @@ const PokemonCard = (props) => {
   const [pokemon, setPokemon] = useState(props.pokemon);
   const [borderStyle, setBorderStyle] = useState({});
   const [clicked, setClicked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleClick = () => {
+    setLoading(true);
+    setModalShow(true);
     async function fetchPokemonInfo() {
       if (!clicked) {
         let updatedPokemon = pokemon;
@@ -168,7 +171,7 @@ const PokemonCard = (props) => {
 
     fetchPokemonInfo()
       .then((updatedPokemon) => loadComplete(updatedPokemon))
-      .finally(() => setModalShow(true));
+      .finally(() => setLoading(false));
   };
 
   const handleMouseOver = () => {
@@ -226,6 +229,7 @@ const PokemonCard = (props) => {
         show={modalShow}
         onHide={() => setModalShow(false)}
         pokemon={pokemon}
+        loading={loading}
       />
     </>
   );

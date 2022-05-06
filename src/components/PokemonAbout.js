@@ -1,6 +1,6 @@
 function PokemonAbout(props) {
   return (
-    <>
+    <div className="modal-about-container">
       <div className="modal-description">
         <h5>Pokedex Entry</h5>
         <p>{props.pokemon.description}</p>
@@ -22,7 +22,7 @@ function PokemonAbout(props) {
           <p>{props.pokemon.weight}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
