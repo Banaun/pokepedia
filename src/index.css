@@ -18,7 +18,6 @@ body {
   width: 100vw;
   height: 100vh;
   background: #d5d8dd;
-  padding: 0 10vw;
   display: flex;
   justify-content: center;
 }
@@ -37,10 +36,14 @@ body {
 .loading-pokemon-container {
   display: flex;
   align-items: center;
+  margin-top: 7rem;
+}
+
+.loading-pokemon-container .loading-pokeball {
+  height: 5rem;
 }
 
 .loading-pokeball {
-  height: 100px;
   filter: brightness(80%);
   animation: rotatePokeBall ease-in-out 3s infinite;
 }
@@ -61,11 +64,12 @@ body {
 }
 
 .search-input {
-  margin: 2vh 10px;
-  padding-left: 1vw;
-  height: 40px;
+  margin: 2rem 0;
+  padding-left: 0.8rem;
+  min-height: 2.5rem;
   width: 50vw;
-  max-width: 750px;
+  max-width: 45rem;
+  min-width: 20rem;
   font-size: 26px;
   border: none;
   border-radius: 5px;
@@ -76,20 +80,19 @@ body {
 
 .search-clear {
   position: relative;
-  right: 40px;
+  right: 1.6rem;
 }
 
 .search-button,
 .random-pokemon-button {
   background-color: #5a5a5a;
-  height: 40px;
-  width: 40px;
-  margin-right: 10px;
+  padding: 0.4rem 0.7rem;
+  margin-right: 0.7rem;
   border-radius: 10px;
   border: none;
   cursor: pointer;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   box-shadow: 3px 3px 3px 1px rgba(37, 37, 37, 0.3);
   -webkit-box-shadow: 3px 3px 3px 1px rgba(37, 37, 37, 0.3);
   -moz-box-shadow: 3px 3px 3px 1px rgba(37, 37, 37, 0.3);
@@ -106,10 +109,11 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .pokemon-list-container {
-  width: 80vw;
+  width: 90vw;
   display: flex;
   justify-content: center;
   flex-flow: wrap row;
@@ -117,7 +121,7 @@ body {
 }
 
 .no-result-container {
-  height: 100px;
+  min-height: 10rem;
   display: flex;
   align-items: center;
 }
@@ -126,12 +130,13 @@ body {
   background-color: white;
   background-image: url(static/pokeball-white-icon.png);
   background-repeat: no-repeat;
-  background-size: 200px auto;
-  background-position-x: 300px;
-  height: 200px;
-  width: 400px;
-  margin: 10px;
-  margin-top: 70px;
+  background-size: 12rem auto;
+  background-position-x: 18rem;
+  height: 12rem;
+  width: 24rem;
+  max-width: 100%;
+  margin: 1rem;
+  margin-top: 4rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -149,6 +154,7 @@ body {
 
 .card-type-outer-container {
   position: relative;
+  bottom: 3.5rem;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -156,16 +162,13 @@ body {
 
 .card-type-container1,
 .card-type-container2 {
-  position: relative;
-  bottom: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 5px;
+  width: 4.5rem;
+  min-height: 1.8rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   border-radius: 10px;
   opacity: 0.8;
   text-transform: capitalize;
@@ -173,13 +176,13 @@ body {
 
 .pokemon-id {
   position: relative;
-  top: -77px;
-  left: -170px;
+  top: -5rem;
+  left: -10.5rem;
 }
 
 .pokemon-name {
   position: relative;
-  top: -75px;
+  top: -4.5rem;
   color: black;
   font-size: 20px;
 }
@@ -190,43 +193,45 @@ p::first-letter {
 
 .pokemon-image {
   position: relative;
-  top: -40px;
-  height: 100px;
+  top: -2.5rem;
+  min-height: 7rem;
   width: auto;
+  max-width: 100%;
   -webkit-filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
   filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
   transition-duration: 200ms;
 }
 
 .modal-container {
-  height: 500px;
+  min-height: 33rem;
   display: flex;
   justify-content: center;
 }
 
 .btn-close {
   position: absolute;
-  right: 24px;
-  top: 20px;
+  right: 1.5rem;
+  top: 1.3rem;
 }
 
 .modal-id {
   position: absolute;
-  left: 24px;
-  top: 20px;
+  left: 1.5rem;
+  top: 1.3rem;
 }
 
 .modal-image {
   position: absolute;
-  top: -300px;
+  top: -18.5rem;
   transform: scale(0.8);
+  max-width: 100%;
   -webkit-filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
   filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
 }
 
 .modal-name {
   position: absolute;
-  top: 130px;
+  top: 8.2rem;
 }
 
 .modal-name h2::first-letter {
@@ -235,16 +240,16 @@ p::first-letter {
 
 .modal-tabs-container {
   position: relative;
-  height: 340px;
-  width: 550px;
-  top: 160px;
+  height: 23rem;
+  width: 40rem;
+  top: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .tab-content {
-  height: 280px;
+  height: 19rem;
 }
 
 .tab-pane {
@@ -253,7 +258,7 @@ p::first-letter {
 
 .modal-about-container {
   position: relative;
-  top: 10px;
+  top: 0.7rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -261,8 +266,7 @@ p::first-letter {
 }
 
 .modal-description {
-  margin-left: 30px;
-  margin-right: 30px;
+  margin: 0 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -284,8 +288,8 @@ p::first-letter {
 }
 
 .modal-type-children p {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 0.7rem;
+  margin-right: 0.7rem;
 }
 
 .modal-height-weight-container {
@@ -294,30 +298,21 @@ p::first-letter {
   justify-content: center;
 }
 
-.modal-height {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
+.modal-height,
 .modal-weight {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .modal-stats-container {
   position: relative;
-  width: 450px;
-  top: 20px;
+  width: 28rem;
+  top: 0.7rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -328,15 +323,15 @@ p::first-letter {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 0.7rem;
 }
 
 .stat-container * {
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 
 .stat-bar-outer {
-  width: 400px;
+  width: 25rem;
   background-color: #ddd;
   border-radius: 15px;
 }
@@ -345,8 +340,7 @@ p::first-letter {
   position: relative;
   text-align: right;
   font-size: 13px;
-  padding-top: 1px;
-  padding-bottom: 1px;
+  padding: 1px;
   color: white;
   border-radius: 15px;
   white-space: nowrap;
@@ -382,8 +376,7 @@ p::first-letter {
 
 .modal-abilities-container {
   position: relative;
-  width: 450px;
-  top: 20px;
+  top: 0.7rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -394,7 +387,6 @@ p::first-letter {
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: 20px;
   text-align: center;
 }
 
@@ -404,8 +396,8 @@ p::first-letter {
 
 .modal-evolution-container {
   position: relative;
-  width: 450px;
-  top: 20px;
+  width: 30rem;
+  top: 0.7rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -425,11 +417,12 @@ p::first-letter {
 }
 
 .evolution-image-and-name p {
-  margin-top: 10px;
+  margin-top: 0.7rem;
 }
 
 .evolution-image {
   transform: scale(1.3);
+  max-width: 100%;
   image-rendering: pixelated;
 }
 
@@ -438,8 +431,8 @@ p::first-letter {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .evolution-arrow-level-container p {
@@ -448,8 +441,8 @@ p::first-letter {
 
 .modal-location-container {
   position: relative;
-  width: 600px;
-  top: 20px;
+  width: 40rem;
+  top: 0.7rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -462,8 +455,8 @@ p::first-letter {
 }
 
 .location-collapse-container {
-  margin-top: 20px;
-  max-height: 235px;
+  margin-top: 1rem;
+  max-height: 15.5rem;
   overflow-y: auto;
 }
 
@@ -484,7 +477,7 @@ p::first-letter {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0.7rem;
 }
 
 /* Track */
