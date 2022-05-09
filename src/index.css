@@ -207,7 +207,7 @@ p::first-letter {
 }
 
 .modal-container {
-  max-height: 33rem;
+  min-height: 33rem;
   display: flex;
   justify-content: center;
 }
@@ -498,6 +498,13 @@ p::first-letter {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+@media (max-width: 1080px) {
+  .modal-image {
+    top: -16rem;
+    transform: scale(0.6);
+  }
 }
 
 @media (max-width: 991px) {
