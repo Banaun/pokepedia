@@ -202,8 +202,12 @@ p::first-letter {
   transition-duration: 200ms;
 }
 
+.modal-body {
+  min-height: 35rem;
+}
+
 .modal-container {
-  min-height: 33rem;
+  max-height: 33rem;
   display: flex;
   justify-content: center;
 }
@@ -224,7 +228,7 @@ p::first-letter {
   position: absolute;
   top: -18.5rem;
   transform: scale(0.8);
-  max-width: 100%;
+  max-width: auto;
   -webkit-filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
   filter: drop-shadow(3px 3px 3px rgb(80, 80, 80));
 }
@@ -250,6 +254,7 @@ p::first-letter {
 
 .tab-content {
   height: 19rem;
+  overflow-x: auto;
 }
 
 .tab-pane {
@@ -495,53 +500,185 @@ p::first-letter {
   background: #555;
 }
 
-/*
-@media (max-width: 2100px) {
-  .pokemoncard-container {
-    background-size: 160px auto;
-    background-position-x: 240px;
-    height: 160px;
-    width: 320px;
-    margin-top: 80px;
-  }
-
-  .pokemon-id {
-    position: relative;
-    top: -60px;
-    left: -130px;
-  }
-
-  .pokemon-name {
-    top: -70px;
-    font-size: 18px;
+@media (max-width: 991px) {
+  .modal-body {
+    min-height: 28rem;
   }
 
   .modal-container {
-    height: 500px;
-    width: inherit;
+    min-height: 26rem;
     display: flex;
     justify-content: center;
   }
 
-  .modal-description {
-    width: 450px;
+  .modal-id {
+    font-size: 20px;
   }
 
   .modal-image {
-    top: -285px;
-    transform: scale(0.6);
+    top: -17rem;
+    transform: scale(0.5);
   }
 
   .modal-name {
-    top: 90px;
+    top: 5.2rem;
   }
 
   .modal-tabs-container {
-    top: 160px;
+    height: 19rem;
+    top: 7rem;
   }
 
-  .location-collapse-container {
-    max-height: 270px;
+  .modal-tabs-container h4 {
+    font-size: 16px;
+  }
+
+  .modal-tabs-container h5 {
+    font-size: 18px;
+  }
+
+  .modal-tabs-container p {
+    font-size: 14px;
+  }
+
+  .tab-content {
+    height: 15.5rem;
+  }
+
+  .modal-evolution-container {
+    width: 28rem;
+    justify-content: space-evenly;
+  }
+
+  .evolution-image {
+    transform: scale(1);
+  }
+
+  .location-button-container {
+    justify-content: center;
+  }
+
+  .nav.nav-tabs .nav-link {
+    font-size: 14px;
+  }
+
+  .btn.btn-outline-secondary {
+    padding: 4px 6px;
+    margin: 0 4px;
+    font-size: 12px;
   }
 }
-*/
+
+@media (max-width: 700px) {
+  .search-input {
+    padding-left: 0.7rem;
+    max-width: 20rem;
+    min-width: 17rem;
+    min-height: 2.3rem;
+    font-size: 20px;
+  }
+
+  .search-button,
+  .random-pokemon-button {
+    background-color: #5a5a5a;
+    padding: 0.4rem 0.7rem;
+    margin-right: 0.5rem;
+    font-size: 16px;
+  }
+
+  .pokemoncard-container {
+    background-size: 10rem auto;
+    background-position-x: 15rem;
+    height: 10rem;
+    width: 20rem;
+    margin: 1rem;
+    margin-top: 4rem;
+  }
+
+  .pokemon-id {
+    top: -3.8rem;
+    left: -8.5rem;
+  }
+
+  .pokemon-image {
+    top: -2.5rem;
+    min-height: 6rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .btn.btn-outline-secondary {
+    padding: 4px 4px;
+    margin: 0 3px;
+    font-size: 10px;
+  }
+
+  .modal-image {
+    top: -16rem;
+    transform: scale(0.4);
+  }
+}
+
+@media (max-width: 490px) {
+  .modal-stats-container {
+    width: 25rem;
+  }
+
+  .nav.nav-tabs .nav-link {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 450px) {
+  .nav.nav-tabs .nav-link {
+    padding: 8px 6px;
+  }
+
+  .modal-stats-container {
+    width: 20rem;
+  }
+
+  .modal-evolution-container {
+    width: 20rem;
+    justify-content: space-evenly;
+  }
+
+  .evolution-image {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 410px) {
+  .search-input {
+    padding-left: 0.6rem;
+    min-width: 15rem;
+    min-height: 2.3rem;
+    font-size: 1rem;
+  }
+
+  .search-button,
+  .random-pokemon-button {
+    background-color: #5a5a5a;
+    padding: 0.4rem 0.7rem;
+    margin-right: 0.3rem;
+  }
+
+  .pokemoncard-container {
+    background-position-x: 13rem;
+    width: 18rem;
+  }
+
+  .pokemon-id {
+    left: -7.5rem;
+  }
+
+  .evolution-image {
+    transform: scale(0.8);
+  }
+
+  .btn.btn-outline-secondary {
+    padding: 4px 4px;
+    margin: 0 3px;
+    font-size: 8px;
+  }
+}
