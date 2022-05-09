@@ -500,7 +500,7 @@ p::first-letter {
   background: #555;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1920px) {
   .modal-image {
     top: -16rem;
     transform: scale(0.6);
