@@ -254,7 +254,6 @@ p::first-letter {
 
 .tab-content {
   height: 19rem;
-  overflow-x: auto;
 }
 
 .tab-pane {
