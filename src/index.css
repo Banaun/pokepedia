@@ -17,14 +17,16 @@ body {
 .pokemon-page-outer {
   width: 100vw;
   height: 100vh;
+  height: -webkit-fill-available;
+  height: stretch;
   background: #d5d8dd;
   display: flex;
   justify-content: center;
 }
 
 .loading-container {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   position: absolute;
   display: flex;
   align-items: center;
@@ -99,6 +101,7 @@ body {
 }
 
 .search-form {
+  height: 8vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -113,11 +116,12 @@ body {
 }
 
 .pokemon-list-container {
-  width: 90vw;
+  height: 92vh;
+  width: 95vw;
   display: flex;
   justify-content: center;
   flex-flow: wrap row;
-  overflow-x: auto;
+  overflow-y: auto;
 }
 
 .no-result-container {
@@ -262,10 +266,9 @@ p::first-letter {
 
 .modal-about-container {
   position: relative;
-  top: 0.7rem;
+  height: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   overflow-y: auto;
 }
 
@@ -316,10 +319,9 @@ p::first-letter {
 .modal-stats-container {
   position: relative;
   width: 28rem;
-  top: 0.7rem;
+  height: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .stat-container {
@@ -334,8 +336,12 @@ p::first-letter {
   margin-right: 0.5rem;
 }
 
+.stat-container h6 {
+  width: 10%;
+}
+
 .stat-bar-outer {
-  width: 25rem;
+  width: 90%;
   background-color: #ddd;
   border-radius: 15px;
 }
@@ -380,10 +386,9 @@ p::first-letter {
 
 .modal-abilities-container {
   position: relative;
-  top: 0.7rem;
+  height: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   overflow-y: auto;
 }
 
@@ -401,7 +406,7 @@ p::first-letter {
 .modal-evolution-container {
   position: relative;
   width: 30rem;
-  top: 0.7rem;
+  top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -446,10 +451,9 @@ p::first-letter {
 .modal-location-container {
   position: relative;
   width: 40rem;
-  top: 0.7rem;
+  height: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .location-button-container {
@@ -503,6 +507,54 @@ p::first-letter {
   .modal-image {
     top: -16rem;
     transform: scale(0.6);
+  }
+}
+
+@media (max-width: 1536px) {
+  .modal-body {
+    min-height: 28rem;
+  }
+
+  .modal-image {
+    top: -16rem;
+    transform: scale(0.5);
+  }
+
+  .modal-name {
+    top: 6rem;
+  }
+
+  .modal-name h2 {
+    font-size: 26px;
+  }
+
+  .modal-container {
+    min-height: 26rem;
+  }
+
+  .modal-tabs-container {
+    height: 18rem;
+    top: 8rem;
+  }
+
+  .modal-tabs-container h4 {
+    font-size: 16px;
+  }
+
+  .modal-tabs-container h5 {
+    font-size: 18px;
+  }
+
+  .modal-tabs-container p {
+    font-size: 14px;
+  }
+
+  .tab-content {
+    height: 14.5rem;
+  }
+
+  .nav.nav-tabs .nav-link {
+    font-size: 14px;
   }
 }
 
