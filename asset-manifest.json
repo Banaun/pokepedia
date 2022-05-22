@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/pokepedia/static/css/main.f3f00130.css",
+    "main.css": "/pokepedia/static/css/main.a1179c4b.css",
     "main.js": "/pokepedia/static/js/main.400d8aa3.js",
     "static/media/805.png": "/pokepedia/static/media/805.0448d650858b7503b377.png",
     "static/media/10197.png": "/pokepedia/static/media/10197.3e35384d554939ed98f1.png",
@@ -1129,11 +1129,11 @@
     "static/media/666-poke-ball.png": "/pokepedia/static/media/666-poke-ball.b7e11a09067b70f5d5fe.png",
     "static/media/9-mega.png": "/pokepedia/static/media/9-mega.0fb0f0677ed5055f6c1b.png",
     "index.html": "/pokepedia/index.html",
-    "main.f3f00130.css.map": "/pokepedia/static/css/main.f3f00130.css.map",
+    "main.a1179c4b.css.map": "/pokepedia/static/css/main.a1179c4b.css.map",
     "main.400d8aa3.js.map": "/pokepedia/static/js/main.400d8aa3.js.map"
   },
   "entrypoints": [
-    "static/css/main.f3f00130.css",
+    "static/css/main.a1179c4b.css",
     "static/js/main.400d8aa3.js"
   ]
 }
